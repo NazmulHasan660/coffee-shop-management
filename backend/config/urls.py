@@ -19,11 +19,15 @@ from django.http import JsonResponse
 from django.urls import path, include
 
 def home(request):
-    return JsonResponse({"message": "Coffee Shop Backend Running"})
+    return JsonResponse({
+        "status": "OK",
+        "message": "Coffee Shop Backend Running 🚀"
+    })
 
 urlpatterns = [
-    path('', home),
+    path('', home),  # 👈 THIS FIX
     path('admin/', admin.site.urls),
+
     path('api/accounts/', include('accounts.urls')),
     path('api/products/', include('products.urls')),
     path('api/inventory/', include('inventory.urls')),
