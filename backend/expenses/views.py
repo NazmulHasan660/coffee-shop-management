@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
 from .models import Expense
 from .serializers import ExpenseSerializer
-from accounts.permissions import IsAdminRole
+from accounts.permissions import IsAdminUserRole
 
 
 class ExpenseListCreateView(generics.ListCreateAPIView):
@@ -11,10 +11,14 @@ class ExpenseListCreateView(generics.ListCreateAPIView):
     def get_permissions(self):
         if self.request.method == "GET":
             return [permissions.IsAuthenticated()]
-        return [IsAdminRole()]
+        return [IsAdminUserRole()]
 
 
 class ExpenseDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Expense.objects.all()
     serializer_class = ExpenseSerializer
-    permission_classes = [IsAdminRole]
+
+    def get_permissions(self):
+        if self.request.method == "GET":
+            return [permissions.IsAuthenticated()]
+        return [IsAdminUserRole()]

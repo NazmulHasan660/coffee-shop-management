@@ -76,127 +76,129 @@ function Products() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Products</h1>
+    <div className="page-container">
+      <h1 className="page-title">Products</h1>
+      <p className="page-subtitle">Manage product items and stock details.</p>
 
-      <h2>Add Product</h2>
-      <form onSubmit={handleSubmit} style={{ marginBottom: "30px" }}>
-        <div style={{ marginBottom: "10px" }}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Product Name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            style={{ padding: "8px", width: "300px" }}
-          />
-        </div>
+      <div className="form-card">
+        <h2 className="section-title">Add Product</h2>
 
-        <div style={{ marginBottom: "10px" }}>
-          <select
-            name="category_id"
-            value={formData.category_id}
-            onChange={handleChange}
-            required
-            style={{ padding: "8px", width: "300px" }}
-          >
-            <option value="">Select Category</option>
-            {categories.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
-          </select>
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <input
+              type="text"
+              name="name"
+              placeholder="Product Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="form-input"
+            />
+          </div>
 
-        <div style={{ marginBottom: "10px" }}>
-          <input
-            type="number"
-            name="price"
-            placeholder="Price"
-            value={formData.price}
-            onChange={handleChange}
-            required
-            style={{ padding: "8px", width: "300px" }}
-          />
-        </div>
+          <div className="form-group">
+            <select
+              name="category_id"
+              value={formData.category_id}
+              onChange={handleChange}
+              required
+              className="form-select"
+            >
+              <option value="">Select Category</option>
+              {categories.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <div style={{ marginBottom: "10px" }}>
-          <textarea
-            name="description"
-            placeholder="Description"
-            value={formData.description}
-            onChange={handleChange}
-            style={{ padding: "8px", width: "300px", height: "80px" }}
-          />
-        </div>
+          <div className="form-group">
+            <input
+              type="number"
+              name="price"
+              placeholder="Price"
+              value={formData.price}
+              onChange={handleChange}
+              required
+              className="form-input"
+            />
+          </div>
 
-        <div style={{ marginBottom: "10px" }}>
-          <input
-            type="number"
-            name="stock_quantity"
-            placeholder="Stock Quantity"
-            value={formData.stock_quantity}
-            onChange={handleChange}
-            required
-            style={{ padding: "8px", width: "300px" }}
-          />
-        </div>
+          <div className="form-group">
+            <textarea
+              name="description"
+              placeholder="Description"
+              value={formData.description}
+              onChange={handleChange}
+              className="form-textarea"
+            />
+          </div>
 
-        <div style={{ marginBottom: "10px" }}>
-          <label>
+          <div className="form-group">
+            <input
+              type="number"
+              name="stock_quantity"
+              placeholder="Stock Quantity"
+              value={formData.stock_quantity}
+              onChange={handleChange}
+              required
+              className="form-input"
+            />
+          </div>
+
+          <div className="checkbox-group">
             <input
               type="checkbox"
               name="is_available"
               checked={formData.is_available}
               onChange={handleChange}
-            />{" "}
-            Available
-          </label>
-        </div>
+            />
+            <label>Available</label>
+          </div>
 
-        <button type="submit" style={{ padding: "10px 20px" }}>
-          Add Product
-        </button>
-      </form>
+          <button type="submit" className="primary-btn">
+            Add Product
+          </button>
+        </form>
+      </div>
 
-      <h2>Product List</h2>
+      <div className="table-card">
+        <h2 className="section-title">Product List</h2>
 
-      {loading ? (
-        <p>Loading products...</p>
-      ) : products.length === 0 ? (
-        <p>No products found.</p>
-      ) : (
-        <table
-          border="1"
-          cellPadding="10"
-          style={{ borderCollapse: "collapse", width: "100%" }}
-        >
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Category</th>
-              <th>Price</th>
-              <th>Stock Quantity</th>
-              <th>Available</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product) => (
-              <tr key={product.id}>
-                <td>{product.id}</td>
-                <td>{product.name}</td>
-                <td>{product.category?.name}</td>
-                <td>{product.price}</td>
-                <td>{product.stock_quantity}</td>
-                <td>{product.is_available ? "Yes" : "No"}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+        {loading ? (
+          <p>Loading products...</p>
+        ) : products.length === 0 ? (
+          <p>No products found.</p>
+        ) : (
+          <div className="table-wrapper">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Stock Quantity</th>
+                  <th>Available</th>
+                </tr>
+              </thead>
+              <tbody>
+                {products.map((product) => (
+                  <tr key={product.id}>
+                    <td>{product.id}</td>
+                    <td>{product.name}</td>
+                    <td>{product.category?.name}</td>
+                    <td>{product.price}</td>
+                    <td>{product.stock_quantity}</td>
+                    <td>{product.is_available ? "Yes" : "No"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

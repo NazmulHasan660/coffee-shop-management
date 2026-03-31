@@ -88,129 +88,137 @@ function Purchases() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Purchases</h1>
+    <div className="page-container">
+      <h1 className="page-title">Purchases</h1>
+      <p className="page-subtitle">Record product purchases from suppliers.</p>
 
-      <h2>Add Purchase</h2>
-      <form onSubmit={handleSubmit} style={{ marginBottom: "30px" }}>
-        <div style={{ marginBottom: "10px" }}>
-          <select
-            name="supplier_id"
-            value={formData.supplier_id}
-            onChange={handleChange}
-            required
-            style={{ padding: "8px", width: "300px" }}
-          >
-            <option value="">Select Supplier</option>
-            {suppliers.map((supplier) => (
-              <option key={supplier.id} value={supplier.id}>
-                {supplier.name}
-              </option>
-            ))}
-          </select>
-        </div>
+      <div className="form-card">
+        <h2 className="section-title">Add Purchase</h2>
 
-        <div style={{ marginBottom: "10px" }}>
-          <select
-            name="product_id"
-            value={formData.product_id}
-            onChange={handleChange}
-            required
-            style={{ padding: "8px", width: "300px" }}
-          >
-            <option value="">Select Product</option>
-            {products.map((product) => (
-              <option key={product.id} value={product.id}>
-                {product.name}
-              </option>
-            ))}
-          </select>
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <select
+              name="supplier_id"
+              value={formData.supplier_id}
+              onChange={handleChange}
+              required
+              className="form-select"
+            >
+              <option value="">Select Supplier</option>
+              {suppliers.map((supplier) => (
+                <option key={supplier.id} value={supplier.id}>
+                  {supplier.name}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <div style={{ marginBottom: "10px" }}>
-          <input
-            type="number"
-            name="quantity"
-            placeholder="Quantity"
-            value={formData.quantity}
-            onChange={handleChange}
-            required
-            style={{ padding: "8px", width: "300px" }}
-          />
-        </div>
+          <div className="form-group">
+            <select
+              name="product_id"
+              value={formData.product_id}
+              onChange={handleChange}
+              required
+              className="form-select"
+            >
+              <option value="">Select Product</option>
+              {products.map((product) => (
+                <option key={product.id} value={product.id}>
+                  {product.name}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <div style={{ marginBottom: "10px" }}>
-          <input
-            type="number"
-            name="purchase_price"
-            placeholder="Purchase Price"
-            value={formData.purchase_price}
-            onChange={handleChange}
-            required
-            style={{ padding: "8px", width: "300px" }}
-          />
-        </div>
+          <div className="form-group">
+            <input
+              type="number"
+              name="quantity"
+              placeholder="Quantity"
+              value={formData.quantity}
+              onChange={handleChange}
+              required
+              className="form-input"
+            />
+          </div>
 
-        <div style={{ marginBottom: "10px" }}>
-          <input
-            type="date"
-            name="purchase_date"
-            value={formData.purchase_date}
-            onChange={handleChange}
-            required
-            style={{ padding: "8px", width: "300px" }}
-          />
-        </div>
+          <div className="form-group">
+            <input
+              type="number"
+              name="purchase_price"
+              placeholder="Purchase Price"
+              value={formData.purchase_price}
+              onChange={handleChange}
+              required
+              className="form-input"
+            />
+          </div>
 
-        <div style={{ marginBottom: "10px" }}>
-          <textarea
-            name="note"
-            placeholder="Note"
-            value={formData.note}
-            onChange={handleChange}
-            style={{ padding: "8px", width: "300px", height: "80px" }}
-          />
-        </div>
+          <div className="form-group">
+            <input
+              type="date"
+              name="purchase_date"
+              value={formData.purchase_date}
+              onChange={handleChange}
+              required
+              className="form-input"
+            />
+          </div>
 
-        <button type="submit" style={{ padding: "10px 20px" }}>
-          Add Purchase
-        </button>
-      </form>
+          <div className="form-group">
+            <textarea
+              name="note"
+              placeholder="Note"
+              value={formData.note}
+              onChange={handleChange}
+              className="form-textarea"
+            />
+          </div>
 
-      <h2>Purchase List</h2>
+          <button type="submit" className="primary-btn">
+            Add Purchase
+          </button>
+        </form>
+      </div>
 
-      {loading ? (
-        <p>Loading purchases...</p>
-      ) : purchases.length === 0 ? (
-        <p>No purchases found.</p>
-      ) : (
-        <table border="1" cellPadding="10" style={{ borderCollapse: "collapse", width: "100%" }}>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Supplier</th>
-              <th>Product</th>
-              <th>Quantity</th>
-              <th>Purchase Price</th>
-              <th>Purchase Date</th>
-              <th>Note</th>
-            </tr>
-          </thead>
-          <tbody>
-            {purchases.map((purchase) => (
-              <tr key={purchase.id}>
-                <td>{purchase.id}</td>
-                <td>{purchase.supplier_name}</td>
-                <td>{purchase.product_name}</td>
-                <td>{purchase.quantity}</td>
-                <td>{purchase.purchase_price}</td>
-                <td>{purchase.purchase_date}</td>
-                <td>{purchase.note}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+      <div className="table-card">
+        <h2 className="section-title">Purchase List</h2>
+
+        {loading ? (
+          <p>Loading purchases...</p>
+        ) : purchases.length === 0 ? (
+          <p>No purchases found.</p>
+        ) : (
+          <div className="table-wrapper">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Supplier</th>
+                  <th>Product</th>
+                  <th>Quantity</th>
+                  <th>Purchase Price</th>
+                  <th>Purchase Date</th>
+                  <th>Note</th>
+                </tr>
+              </thead>
+              <tbody>
+                {purchases.map((purchase) => (
+                  <tr key={purchase.id}>
+                    <td>{purchase.id}</td>
+                    <td>{purchase.supplier_name}</td>
+                    <td>{purchase.product_name}</td>
+                    <td>{purchase.quantity}</td>
+                    <td>{purchase.purchase_price}</td>
+                    <td>{purchase.purchase_date}</td>
+                    <td>{purchase.note}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

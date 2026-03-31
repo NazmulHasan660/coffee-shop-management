@@ -61,108 +61,116 @@ function Expenses() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Expenses</h1>
+    <div className="page-container">
+      <h1 className="page-title">Expenses</h1>
+      <p className="page-subtitle">Track operational and business expenses.</p>
 
-      <h2>Add Expense</h2>
-      <form onSubmit={handleSubmit} style={{ marginBottom: "30px" }}>
-        <div style={{ marginBottom: "10px" }}>
-          <input
-            type="text"
-            name="title"
-            placeholder="Expense Title"
-            value={formData.title}
-            onChange={handleChange}
-            required
-            style={{ padding: "8px", width: "300px" }}
-          />
-        </div>
+      <div className="form-card">
+        <h2 className="section-title">Add Expense</h2>
 
-        <div style={{ marginBottom: "10px" }}>
-          <select
-            name="category"
-            value={formData.category}
-            onChange={handleChange}
-            style={{ padding: "8px", width: "300px" }}
-          >
-            <option value="Rent">Rent</option>
-            <option value="Electricity">Electricity</option>
-            <option value="Salary">Salary</option>
-            <option value="Maintenance">Maintenance</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <input
+              type="text"
+              name="title"
+              placeholder="Expense Title"
+              value={formData.title}
+              onChange={handleChange}
+              required
+              className="form-input"
+            />
+          </div>
 
-        <div style={{ marginBottom: "10px" }}>
-          <input
-            type="number"
-            name="amount"
-            placeholder="Amount"
-            value={formData.amount}
-            onChange={handleChange}
-            required
-            style={{ padding: "8px", width: "300px" }}
-          />
-        </div>
+          <div className="form-group">
+            <select
+              name="category"
+              value={formData.category}
+              onChange={handleChange}
+              className="form-select"
+            >
+              <option value="Rent">Rent</option>
+              <option value="Electricity">Electricity</option>
+              <option value="Salary">Salary</option>
+              <option value="Maintenance">Maintenance</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
 
-        <div style={{ marginBottom: "10px" }}>
-          <input
-            type="date"
-            name="expense_date"
-            value={formData.expense_date}
-            onChange={handleChange}
-            required
-            style={{ padding: "8px", width: "300px" }}
-          />
-        </div>
+          <div className="form-group">
+            <input
+              type="number"
+              name="amount"
+              placeholder="Amount"
+              value={formData.amount}
+              onChange={handleChange}
+              required
+              className="form-input"
+            />
+          </div>
 
-        <div style={{ marginBottom: "10px" }}>
-          <textarea
-            name="note"
-            placeholder="Note"
-            value={formData.note}
-            onChange={handleChange}
-            style={{ padding: "8px", width: "300px", height: "80px" }}
-          />
-        </div>
+          <div className="form-group">
+            <input
+              type="date"
+              name="expense_date"
+              value={formData.expense_date}
+              onChange={handleChange}
+              required
+              className="form-input"
+            />
+          </div>
 
-        <button type="submit" style={{ padding: "10px 20px" }}>
-          Add Expense
-        </button>
-      </form>
+          <div className="form-group">
+            <textarea
+              name="note"
+              placeholder="Note"
+              value={formData.note}
+              onChange={handleChange}
+              className="form-textarea"
+            />
+          </div>
 
-      <h2>Expense List</h2>
+          <button type="submit" className="primary-btn">
+            Add Expense
+          </button>
+        </form>
+      </div>
 
-      {loading ? (
-        <p>Loading expenses...</p>
-      ) : expenses.length === 0 ? (
-        <p>No expenses found.</p>
-      ) : (
-        <table border="1" cellPadding="10" style={{ borderCollapse: "collapse", width: "100%" }}>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Category</th>
-              <th>Amount</th>
-              <th>Expense Date</th>
-              <th>Note</th>
-            </tr>
-          </thead>
-          <tbody>
-            {expenses.map((expense) => (
-              <tr key={expense.id}>
-                <td>{expense.id}</td>
-                <td>{expense.title}</td>
-                <td>{expense.category}</td>
-                <td>{expense.amount}</td>
-                <td>{expense.expense_date}</td>
-                <td>{expense.note}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+      <div className="table-card">
+        <h2 className="section-title">Expense List</h2>
+
+        {loading ? (
+          <p>Loading expenses...</p>
+        ) : expenses.length === 0 ? (
+          <p>No expenses found.</p>
+        ) : (
+          <div className="table-wrapper">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Amount</th>
+                  <th>Expense Date</th>
+                  <th>Note</th>
+                </tr>
+              </thead>
+              <tbody>
+                {expenses.map((expense) => (
+                  <tr key={expense.id}>
+                    <td>{expense.id}</td>
+                    <td>{expense.title}</td>
+                    <td>{expense.category}</td>
+                    <td>{expense.amount}</td>
+                    <td>{expense.expense_date}</td>
+                    <td>{expense.note}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

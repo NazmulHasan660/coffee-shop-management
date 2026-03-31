@@ -58,108 +58,112 @@ function Suppliers() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Suppliers</h1>
+    <div className="page-container">
+      <h1 className="page-title">Suppliers</h1>
+      <p className="page-subtitle">Manage supplier contacts and company details.</p>
 
-      <h2>Add Supplier</h2>
-      <form onSubmit={handleSubmit} style={{ marginBottom: "30px" }}>
-        <div style={{ marginBottom: "10px" }}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Supplier Name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            style={{ padding: "8px", width: "300px" }}
-          />
-        </div>
+      <div className="form-card">
+        <h2 className="section-title">Add Supplier</h2>
 
-        <div style={{ marginBottom: "10px" }}>
-          <input
-            type="text"
-            name="company_name"
-            placeholder="Company Name"
-            value={formData.company_name}
-            onChange={handleChange}
-            style={{ padding: "8px", width: "300px" }}
-          />
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <input
+              type="text"
+              name="name"
+              placeholder="Supplier Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="form-input"
+            />
+          </div>
 
-        <div style={{ marginBottom: "10px" }}>
-          <input
-            type="text"
-            name="phone"
-            placeholder="Phone"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-            style={{ padding: "8px", width: "300px" }}
-          />
-        </div>
+          <div className="form-group">
+            <input
+              type="text"
+              name="company_name"
+              placeholder="Company Name"
+              value={formData.company_name}
+              onChange={handleChange}
+              className="form-input"
+            />
+          </div>
 
-        <div style={{ marginBottom: "10px" }}>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            style={{ padding: "8px", width: "300px" }}
-          />
-        </div>
+          <div className="form-group">
+            <input
+              type="text"
+              name="phone"
+              placeholder="Phone"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+              className="form-input"
+            />
+          </div>
 
-        <div style={{ marginBottom: "10px" }}>
-          <textarea
-            name="address"
-            placeholder="Address"
-            value={formData.address}
-            onChange={handleChange}
-            style={{ padding: "8px", width: "300px", height: "80px" }}
-          />
-        </div>
+          <div className="form-group">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              className="form-input"
+            />
+          </div>
 
-        <button type="submit" style={{ padding: "10px 20px" }}>
-          Add Supplier
-        </button>
-      </form>
+          <div className="form-group">
+            <textarea
+              name="address"
+              placeholder="Address"
+              value={formData.address}
+              onChange={handleChange}
+              className="form-textarea"
+            />
+          </div>
 
-      <h2>Supplier List</h2>
+          <button type="submit" className="primary-btn">
+            Add Supplier
+          </button>
+        </form>
+      </div>
 
-      {loading ? (
-        <p>Loading suppliers...</p>
-      ) : suppliers.length === 0 ? (
-        <p>No suppliers found.</p>
-      ) : (
-        <table
-          border="1"
-          cellPadding="10"
-          style={{ borderCollapse: "collapse", width: "100%" }}
-        >
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Company</th>
-              <th>Phone</th>
-              <th>Email</th>
-              <th>Address</th>
-            </tr>
-          </thead>
-          <tbody>
-            {suppliers.map((supplier) => (
-              <tr key={supplier.id}>
-                <td>{supplier.id}</td>
-                <td>{supplier.name}</td>
-                <td>{supplier.company_name}</td>
-                <td>{supplier.phone}</td>
-                <td>{supplier.email}</td>
-                <td>{supplier.address}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+      <div className="table-card">
+        <h2 className="section-title">Supplier List</h2>
+
+        {loading ? (
+          <p>Loading suppliers...</p>
+        ) : suppliers.length === 0 ? (
+          <p>No suppliers found.</p>
+        ) : (
+          <div className="table-wrapper">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Company</th>
+                  <th>Phone</th>
+                  <th>Email</th>
+                  <th>Address</th>
+                </tr>
+              </thead>
+              <tbody>
+                {suppliers.map((supplier) => (
+                  <tr key={supplier.id}>
+                    <td>{supplier.id}</td>
+                    <td>{supplier.name}</td>
+                    <td>{supplier.company_name}</td>
+                    <td>{supplier.phone}</td>
+                    <td>{supplier.email}</td>
+                    <td>{supplier.address}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
