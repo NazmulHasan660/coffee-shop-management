@@ -1,0 +1,56 @@
+# ========================
+# 🔥 PYTHON / DJANGO
+# ========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+db.sqlite3
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Django stuff
+*.log
+staticfiles/
+media/
+
+# ========================
+# 🔥 ENV FILES
+# ========================
+.env
+.env.local
+.env.development
+.env.production
+
+# ========================
+# 🔥 NODE / REACT
+# ========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build files
+frontend/build/
+
+# ========================
+# 🔥 SYSTEM FILES
+# ========================
+.DS_Store
+Thumbs.db
+
+# ========================
+# 🔥 VSCODE
+# ========================
+.vscode/
+
+# ========================
+# 🔥 OTHER
+# ========================
+*.zip
+*.tar
+*.gz
