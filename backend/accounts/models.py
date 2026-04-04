@@ -11,14 +11,4 @@ class User(AbstractUser):
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default="STAFF")
 
     def __str__(self):
-        return self.username
-
-
-def create_default_admin():
-    if not User.objects.filter(username="admin").exists():
-        User.objects.create_superuser(
-            username="admin",
-            email="admin@gmail.com",
-            password="admin123",
-            role="ADMIN",
-        )
+        return f"{self.username} ({self.role})"
