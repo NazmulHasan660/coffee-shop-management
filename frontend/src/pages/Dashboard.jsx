@@ -184,7 +184,7 @@ function Dashboard() {
       <div style={styles.wrapper}>
         <h1 style={styles.title}>Dashboard</h1>
         <p style={styles.subtitle}>
-          Welcome to your Coffee Shop Management overview.
+          Welcome to Coffee Shop Management overview.
         </p>
 
         <div
@@ -212,30 +212,29 @@ function Dashboard() {
           <div style={styles.chartCard}>
             <h3 style={styles.chartTitle}>Stock Levels (Bar)</h3>
             <div style={styles.chartBox}>
-        <Bar data={inventoryData} options={barOptions} />
-             </div>
+              <Bar data={inventoryData} options={barOptions} />
+            </div>
           </div>
 
           <div style={styles.chartCard}>
             <h3 style={styles.chartTitle}>Product Ratio (Pie)</h3>
             <div style={styles.chartBox}>
-          <Bar data={inventoryData} options={barOptions} />
-          </div>
-          
+              <Pie data={distributionData} options={commonOptions} />
+            </div>
           </div>
 
           <div style={styles.chartCard}>
             <h3 style={styles.chartTitle}>Inventory Trend (Line)</h3>
             <div style={styles.chartBox}>
-             <Bar data={inventoryData} options={barOptions} />
-           </div>
+              <Line data={inventoryData} options={lineOptions} />
+            </div>
           </div>
 
           <div style={styles.chartCard}>
             <h3 style={styles.chartTitle}>Quick Overview (Doughnut)</h3>
             <div style={styles.chartBox}>
-              <Bar data={inventoryData} options={barOptions} />
-           </div>
+              <Doughnut data={doughnutData} options={commonOptions} />
+            </div>
           </div>
         </div>
 
@@ -333,14 +332,15 @@ const styles = {
   },
 
   chartCard: {
-  background: "#fffaf5",
-  border: "1px solid #eadfce",
-  borderRadius: "18px",
-  padding: "14px",
-  boxSizing: "border-box",
-  width: "100%",
-  overflow: "hidden"
-},
+    background: "#fffaf5",
+    border: "1px solid #eadfce",
+    borderRadius: "18px",
+    padding: "14px",
+    boxSizing: "border-box",
+    width: "100%",
+    overflow: "hidden",
+    boxShadow: "0 2px 10px rgba(0,0,0,0.04)",
+  },
 
   chartTitle: {
     margin: "0 0 14px 0",
@@ -349,12 +349,12 @@ const styles = {
     color: "#1f130d",
   },
 
- chartBox: {
-  position: "relative",
-  width: "100%",
-  height: "220px",
-  overflow: "hidden"
-},
+  chartBox: {
+    position: "relative",
+    width: "100%",
+    height: "220px",
+    overflow: "hidden",
+  },
 
   bottomWrapper: {
     display: "flex",
@@ -368,11 +368,14 @@ const styles = {
     borderRadius: "18px",
     padding: "18px 16px",
     boxShadow: "0 2px 10px rgba(0,0,0,0.04)",
+    overflow: "hidden",
   },
 
   bottomChartBox: {
     width: "100%",
     height: "280px",
+    position: "relative",
+    overflow: "hidden",
   },
 };
 
