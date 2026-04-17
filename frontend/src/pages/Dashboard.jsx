@@ -210,28 +210,28 @@ function Dashboard() {
           }}
         >
           <div style={styles.chartCard}>
-            <h3 style={styles.chartTitle}>Stock Levels (Bar)</h3>
+            <h3 style={styles.chartTitle}>Stock Levels</h3>
             <div style={styles.chartBox}>
               <Bar data={inventoryData} options={barOptions} />
             </div>
           </div>
 
           <div style={styles.chartCard}>
-            <h3 style={styles.chartTitle}>Product Ratio (Pie)</h3>
+            <h3 style={styles.chartTitle}>Product Ratio</h3>
             <div style={styles.chartBox}>
               <Pie data={distributionData} options={commonOptions} />
             </div>
           </div>
 
           <div style={styles.chartCard}>
-            <h3 style={styles.chartTitle}>Inventory Trend (Line)</h3>
+            <h3 style={styles.chartTitle}>Inventory Trend</h3>
             <div style={styles.chartBox}>
               <Line data={inventoryData} options={lineOptions} />
             </div>
           </div>
 
           <div style={styles.chartCard}>
-            <h3 style={styles.chartTitle}>Quick Overview (Doughnut)</h3>
+            <h3 style={styles.chartTitle}>Quick Overview</h3>
             <div style={styles.chartBox}>
               <Doughnut data={doughnutData} options={commonOptions} />
             </div>
@@ -246,7 +246,7 @@ function Dashboard() {
             }}
           >
             <h3 style={{ ...styles.chartTitle, textAlign: "center" }}>
-              Stock Distribution (Polar Area)
+              Stock Distribution
             </h3>
             <div style={styles.bottomChartBox}>
               <PolarArea data={polarData} options={commonOptions} />
