@@ -184,7 +184,7 @@ function Dashboard() {
       <div style={styles.wrapper}>
         <h1 style={styles.title}>Dashboard</h1>
         <p style={styles.subtitle}>
-          Welcome to your Coffee Shop Management overview.
+          Welcome to Coffee Shop Management overview.
         </p>
 
         <div
@@ -210,14 +210,14 @@ function Dashboard() {
           }}
         >
           <div style={styles.chartCard}>
-            <h3 style={styles.chartTitle}>Stock Levels (Bar)</h3>
+            <h3 style={styles.chartTitle}>Stock Levels</h3>
             <div style={styles.chartBox}>
         <Bar data={inventoryData} options={barOptions} />
              </div>
           </div>
 
           <div style={styles.chartCard}>
-            <h3 style={styles.chartTitle}>Product Ratio (Pie)</h3>
+            <h3 style={styles.chartTitle}>Product Ratio</h3>
             <div style={styles.chartBox}>
           <Bar data={inventoryData} options={barOptions} />
           </div>
@@ -225,14 +225,14 @@ function Dashboard() {
           </div>
 
           <div style={styles.chartCard}>
-            <h3 style={styles.chartTitle}>Inventory Trend (Line)</h3>
+            <h3 style={styles.chartTitle}>Inventory Trend</h3>
             <div style={styles.chartBox}>
              <Bar data={inventoryData} options={barOptions} />
            </div>
           </div>
 
           <div style={styles.chartCard}>
-            <h3 style={styles.chartTitle}>Quick Overview (Doughnut)</h3>
+            <h3 style={styles.chartTitle}>Quick Overview</h3>
             <div style={styles.chartBox}>
               <Bar data={inventoryData} options={barOptions} />
            </div>
@@ -247,7 +247,7 @@ function Dashboard() {
             }}
           >
             <h3 style={{ ...styles.chartTitle, textAlign: "center" }}>
-              Stock Distribution (Polar Area)
+              Stock Distribution
             </h3>
             <div style={styles.bottomChartBox}>
               <PolarArea data={polarData} options={commonOptions} />
