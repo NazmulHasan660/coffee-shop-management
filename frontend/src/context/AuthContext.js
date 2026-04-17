@@ -25,6 +25,7 @@ function AuthProvider({ children }) {
     });
 
     setUser(profileResponse.data);
+    setLoading(false);
   };
 
   const logout = () => {
