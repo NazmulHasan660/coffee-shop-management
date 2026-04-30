@@ -4,8 +4,8 @@ A full-stack web-based Coffee Shop Management System built to manage daily busin
 
 ## Live Links
 - Frontend: https://coffee-shop-management-livid.vercel.app
-- Backend: https://coffee-shop-backend-k7ou.onrender.com
-- API Base URL: https://coffee-shop-backend-k7ou.onrender.com/api/
+- Backend: https://coffee-shop-management-uraz.onrender.com/
+- API Base URL: https://coffee-shop-management-uraz.onrender.com/api
 
 ## Tech Stack
 ### Frontend
